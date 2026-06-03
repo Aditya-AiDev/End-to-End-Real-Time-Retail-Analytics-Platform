@@ -1,0 +1,144 @@
+{
+  "stores": {
+    "STORE_BLR_002": {
+      "name": "Purplle Bangalore MG Road",
+      "city": "Bangalore",
+      "open_hours": { "open": "10:00", "close": "21:00" },
+      "cameras": {
+        "CAM_ENTRY_01": {
+          "type": "ENTRY_EXIT",
+          "zones": [
+            {
+              "zone_id": "ENTRY_THRESHOLD",
+              "zone_name": "Entry / Exit Threshold",
+              "zone_type": "ENTRY",
+              "sku_zone": null,
+              "is_revenue_zone": false,
+              "polygon": [[0.0,0.65],[1.0,0.65],[1.0,1.0],[0.0,1.0]]
+            },
+            {
+              "zone_id": "FOYER",
+              "zone_name": "Foyer",
+              "zone_type": "TRANSITION",
+              "sku_zone": null,
+              "is_revenue_zone": false,
+              "polygon": [[0.0,0.3],[1.0,0.3],[1.0,0.65],[0.0,0.65]]
+            }
+          ]
+        },
+        "CAM_FLOOR_01": {
+          "type": "MAIN_FLOOR",
+          "zones": [
+            {
+              "zone_id": "SKINCARE",
+              "zone_name": "Skincare Zone",
+              "zone_type": "SHELF",
+              "sku_zone": "MOISTURISER",
+              "is_revenue_zone": true,
+              "polygon": [[0.0,0.0],[0.5,0.0],[0.5,0.6],[0.0,0.6]]
+            },
+            {
+              "zone_id": "HAIRCARE",
+              "zone_name": "Haircare Zone",
+              "zone_type": "SHELF",
+              "sku_zone": "SHAMPOO",
+              "is_revenue_zone": true,
+              "polygon": [[0.5,0.0],[1.0,0.0],[1.0,0.6],[0.5,0.6]]
+            },
+            {
+              "zone_id": "MAKEUP",
+              "zone_name": "Makeup Zone",
+              "zone_type": "SHELF",
+              "sku_zone": "LIPSTICK",
+              "is_revenue_zone": true,
+              "polygon": [[0.0,0.6],[0.45,0.6],[0.45,1.0],[0.0,1.0]]
+            },
+            {
+              "zone_id": "FRAGRANCES",
+              "zone_name": "Fragrance Zone",
+              "zone_type": "SHELF",
+              "sku_zone": "PERFUME",
+              "is_revenue_zone": true,
+              "polygon": [[0.55,0.6],[1.0,0.6],[1.0,1.0],[0.55,1.0]]
+            },
+            {
+              "zone_id": "AISLE",
+              "zone_name": "Main Aisle",
+              "zone_type": "TRANSITION",
+              "sku_zone": null,
+              "is_revenue_zone": false,
+              "polygon": [[0.45,0.6],[0.55,0.6],[0.55,1.0],[0.45,1.0]]
+            }
+          ]
+        },
+        "CAM_BILLING_01": {
+          "type": "BILLING",
+          "zones": [
+            {
+              "zone_id": "BILLING_COUNTER",
+              "zone_name": "Billing Counter Queue",
+              "zone_type": "BILLING",
+              "sku_zone": null,
+              "is_revenue_zone": true,
+              "polygon": [[0.2,0.0],[0.8,0.0],[0.8,0.7],[0.2,0.7]]
+            }
+          ]
+        }
+      }
+    },
+    "ST1076": {
+      "name": "Purplle Store Mumbai 1076",
+      "city": "Mumbai",
+      "open_hours": { "open": "10:00", "close": "21:00" },
+      "cameras": {
+        "cam1": {
+          "type": "ENTRY_EXIT",
+          "zones": [
+            {
+              "zone_id": "ENTRY_THRESHOLD",
+              "zone_name": "Entry / Exit Threshold",
+              "zone_type": "ENTRY",
+              "sku_zone": null,
+              "is_revenue_zone": false,
+              "polygon": [[0.0,0.65],[1.0,0.65],[1.0,1.0],[0.0,1.0]]
+            }
+          ]
+        },
+        "CAM2": {
+          "type": "MAIN_FLOOR",
+          "zones": [
+            {
+              "zone_id": "PURPLLE_MUM_1076_Z01",
+              "zone_name": "Left Shelf",
+              "zone_type": "SHELF",
+              "sku_zone": "SKINCARE",
+              "is_revenue_zone": true,
+              "polygon": [[0.0,0.0],[0.5,0.0],[0.5,1.0],[0.0,1.0]]
+            },
+            {
+              "zone_id": "PURPLLE_MUM_1076_Z02",
+              "zone_name": "Right Shelf",
+              "zone_type": "SHELF",
+              "sku_zone": "MAKEUP",
+              "is_revenue_zone": true,
+              "polygon": [[0.5,0.0],[1.0,0.0],[1.0,1.0],[0.5,1.0]]
+            }
+          ]
+        },
+        "PURPLLE_MUM_1076_CAM6": {
+          "type": "BILLING",
+          "zones": [
+            {
+              "zone_id": "PURPLLE_MUM_1076_Z_BILLING_01",
+              "zone_name": "Billing Counter Queue",
+              "zone_type": "BILLING",
+              "sku_zone": null,
+              "is_revenue_zone": true,
+              "polygon": [[0.1,0.0],[0.9,0.0],[0.9,0.8],[0.1,0.8]]
+            }
+          ]
+        }
+      }
+    }
+  }
+}
