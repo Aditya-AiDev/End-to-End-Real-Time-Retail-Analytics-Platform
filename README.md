@@ -137,7 +137,7 @@ Check what you already have installed on this machine:
 | Tool | Required | Your Version |
 |------|----------|-------------|
 | Java JDK | 17+ | 21.0.1 |
-| Maven | 3.8+ | NOT FOUND |
+| Maven | 3.8+ | 3.9.16 |
 | Python | 3.8+ | 3.13.5 |
 | pip | any | 26.1.2 |
 | Node.js | 16+ | 22.17.0 |
