@@ -17,9 +17,6 @@
 7. [Event Schema](#7-event-schema)
 8. [ML/CV Techniques](#8-mlcv-techniques)
 9. [File Guide](#9-file-guide)
-10. [Troubleshooting](#10-troubleshooting)
-11. [Production Checklist](#11-production-checklist)
-12. [Changelog](#12-changelog)
 
 ---
 
@@ -146,7 +143,11 @@ Check what you already have installed on this machine:
 ### Python packages:
 ### by
 ```cmd
+cd pipeline
+
 pip install -r requirements.txt
+
+pip install supervision
 ```
 
 - torch 2.12.0
@@ -204,7 +205,7 @@ cd backend
 
 mvn spring-boot:run
 
-```
+`````
 
 
 
@@ -420,105 +421,8 @@ REENTRY                Same visitor_id seen again after EXIT (Re-ID match)
 
 ---
 
-## 10. Troubleshooting
 
-### Maven not found
-```
-'mvn' is not recognized as an internal or external command
-```
-Install Maven and add `C:\maven\bin` to PATH. See Prerequisites section above.
 
-### Python `supervision` not found
-```
-ModuleNotFoundError: No module named 'supervision'
-```
-```cmd
-pip install supervision
-```
 
-### Port 8080 already in use
-```
-Web server failed to start. Port 8080 was already in use.
-```
-Either stop the other process or change the port in `backend/src/main/resources/application.yml`:
-```yaml
-server:
-  port: 8081
-```
-Then update frontend proxy in `frontend/package.json`:
-```json
-"proxy": "http://localhost:8081"
-```
 
-### Frontend shows all zeros after pipeline runs
-The pipeline may still be processing. Check the terminal running `detect.py` — it logs `[detect] Done. Emitted: X` when finished. Also verify the backend received events at:
-```
-http://localhost:8080/api/v1/stores/ST1076/metrics
-```
 
-### run.sh not found / permission denied (Git Bash)
-```bash
-cd E:/Perplle_Projrct_YOLO_java/pipeline
-chmod +x run.sh
-bash run.sh
-```
-If Git Bash is not available, use the manual CMD commands listed in Step 3.
-
-### H2 console shows empty tables
-The pipeline has not run yet, or ran against a different store_id. Check that `store_id` in events matches `ST1076`. You can query directly:
-```sql
-SELECT COUNT(*) FROM STORE_EVENTS;
-SELECT DISTINCT STORE_ID FROM STORE_EVENTS;
-```
-
----
-
-## 11. Production Checklist
-
-- Switch DB: `SPRING_PROFILES_ACTIVE=prod` + set env vars `DB_URL`, `DB_USER`, `DB_PASS`
-- Replace in-memory STOMP broker with RabbitMQ for horizontal pod scaling
-- Add Redis layer for metrics caching if event write throughput exceeds 10k/min
-- Make anomaly alerts persistent (add AnomalyAlert JPA entity + repository)
-- Set `REACT_APP_API_URL=https://your-api-domain.com` for production frontend
-- Add authentication (Spring Security JWT) to all API endpoints
-- Replace H2 with PostgreSQL and run `ddl-auto: validate` not `create-drop`
-
----
-
-## 12. Changelog
-
-All changes made during this project session, in order:
-
-### Session 1 — Initial Implementation
-- Created complete project at `E:\Perplle_Projrct_YOLO_java\`
-- Built Python pipeline: `detect.py`, `tracker.py`, `zone_mapper.py`, `staff_detector.py`, `emit.py`, `store_layout.json`, `run.sh`, `requirements.txt`
-- Built Spring Boot backend with full Maven structure (`pom.xml`, application.yml, all Java source files)
-- Built React frontend with all components and hooks
-- Wrote initial README
-
-### Session 2 — CCTV Resource Folder
-- Created `CCTV/` directory inside the project
-- Created `CCTV/footage/` — copied all 5 MP4 clips from `E:\PurplleProject\`
-- Created `CCTV/dataset/` — copied POS CSV, sample events JSONL, problem statement PDF
-- Created `CCTV/events_output/` — pipeline writes JSONL output here
-- Renamed all files: removed spaces and random hash suffixes for shell script compatibility
-  - `CAM 1.mp4` → `CAM_1.mp4` (and similarly for CAM 2-5)
-  - `POS - sample transactionsb1e826f.csv` → `POS_transactions.csv`
-  - `sample_eventsbe42122.jsonl` → `sample_events.jsonl`
-  - `Purplle Tech Challenge 2026 _ Round 2 Problem Statement480e74e.pdf` → `Problem_Statement.pdf`
-- Copied `POS_transactions.csv` into `CCTV/footage/` so `run.sh` auto-discovers it via `find *.csv`
-- Updated `run.sh` defaults: `CLIPS_DIR=../CCTV/footage`, `OUT_DIR=../CCTV/events_output/${STORE_ID}`
-- Added `CCTV/README.md` explaining folder structure and camera mappings
-
-### Session 3 — How to Run + README Overhaul
-- Verified installed tools: Java 21, Python 3.13, Node 22, npm 11 (Maven missing)
-- Verified already-installed Python packages: torch 2.12, ultralytics 8.4.60, supervision 0.28, opencv 4.13
-- Rewrote README completely with:
-  - Accurate prerequisites table with actual installed versions
-  - Maven installation instructions (3 methods)
-  - Step-by-step run instructions for both Git Bash and Windows CMD
-  - Manual `detect.py` commands for CMD users without Git Bash
-  - Verification URLs table
-  - Full troubleshooting section with exact error messages and fixes
-  - Complete file guide for all 3 layers
-  - Changelog section tracking all project changes
