@@ -134,16 +134,21 @@ E:\Perplle_Projrct_YOLO_java\
 
 Check what you already have installed on this machine:
 
-| Tool | Required | Your Version | Status |
-|------|----------|-------------|--------|
-| Java JDK | 17+ | 21.0.1 | INSTALLED |
-| Maven | 3.8+ | NOT FOUND | NEED TO INSTALL |
-| Python | 3.8+ | 3.13.5 | INSTALLED |
-| pip | any | 26.1.2 | INSTALLED |
-| Node.js | 16+ | 22.17.0 | INSTALLED |
-| npm | 8+ | 11.16.0 | INSTALLED |
+| Tool | Required | Your Version |
+|------|----------|-------------|
+| Java JDK | 17+ | 21.0.1 |
+| Maven | 3.8+ | NOT FOUND |
+| Python | 3.8+ | 3.13.5 |
+| pip | any | 26.1.2 |
+| Node.js | 16+ | 22.17.0 |
+| npm | 8+ | 11.16.0 |
 
-### Python packages already installed on this machine:
+### Python packages:
+### by
+```cmd
+pip install -r requirements.txt
+```
+
 - torch 2.12.0
 - ultralytics 8.4.60 (YOLOv8)
 - supervision 0.28.0 (ByteTrack)
