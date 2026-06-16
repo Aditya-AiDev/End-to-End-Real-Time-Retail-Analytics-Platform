@@ -1,5 +1,7 @@
-# Purplle Store Intelligence — PS3
-> Round 2 Tech Challenge: End-to-end retail analytics from raw CCTV footage
+
+# End-to-End Real-Time Retail Analytics & Computer Vision Platform
+
+### Purplle Store Intelligence
 
 ---
 
